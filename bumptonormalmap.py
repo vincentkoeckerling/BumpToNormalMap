@@ -165,6 +165,8 @@ def bump_to_normal(path, strength=1.0, output_format="png"):
     if output_format == "png":
         colors = np.uint8(colors * 255)
         cv2.imwrite(new_path, colors)
+        filename = args.path.split('/')[-1].split('.')[0]
+        cv2.imwrite(f"{filename}.png", colors)
     elif output_format == "exr":
         cv2.imwrite(new_path, colors.astype(np.float32))
     else:
